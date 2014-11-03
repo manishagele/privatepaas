@@ -27,7 +27,7 @@ node /[0-9]{1,12}.(default|manager|worker).appserver/ inherits base {
 	members            => undef,
 	offset		   => 0,
         hazelcast_port     => 4000,
-	config_db          => 'aesp_as_config',
+	config_db          => 'xxxxx_as_config',
         config_target_path => 'as_config',
         maintenance_mode   => 'zero',
         depsync            => false,

@@ -41,7 +41,7 @@ class bam::params {
   #$max_active           = '150'
   #$max_wait             = '360000'
 
-  $config_user		= 'aesp_as'
+  $config_user		= 'xxxxx_as'
   $config_password	= 'Bz9TFL1D'
 
   # Depsync settings

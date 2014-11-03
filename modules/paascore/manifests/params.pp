@@ -40,17 +40,17 @@ class paascore::params {
   # variables
   $host_user		= 'root'
   $puppet_ip		= '10.251.29.141'
-  $puppet_host		= 'puppetmaster.integrateaz.gov'  
+  $puppet_host		= 'puppetmaster.xxxxxxx'  
 
   $iaas			= 'ec2'
   $region		= 'us-west-1'
-  $ec2_identity		= 'AKIAI3J4ZHAGFRDWXMQA'
-  $ec2_credentials	= 'RwOAOl/b0n1k3WOxlQ3iFXw/3W4RDQ825v2h6/ff'
-  $ec2_owner_id		= '558265680279'
-  $ec2_keypair_name	= 'r2-azintigrate1'
-  $ec2_availability_zone = 'us-west-1c'
-  $ec2_security_group_ids = 'sg-f747a798'
-  $ec2_subnet_id	= 'subnet-7d094415'
+  $ec2_identity		= 'XXXXXXX'
+  $ec2_credentials	= 'YYYYYYY'
+  $ec2_owner_id		= '32323232323'
+  $ec2_keypair_name	= 'xxxxxx'
+  $ec2_availability_zone = 'xxxxxxx'
+  $ec2_security_group_ids = 'xxxxxxxx'
+  $ec2_subnet_id	= 'xxxxxxx'
   $ec2_associate_public_ip_address = 'true'
 
   # MySQL server configuration details
@@ -60,8 +60,8 @@ class paascore::params {
   #$max_active           = '150'
   #$max_wait             = '360000'
 
-  $config_user		= 'aesp_sm'
-  $config_password	= 'fCYm2ycx'
+  $config_user		= 'xxxxxx'
+  $config_password	= 'xxxxx'
 
   # Depsync settings
   $svn_user             = 'wso2'

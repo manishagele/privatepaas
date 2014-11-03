@@ -28,7 +28,7 @@ node /[0-9]{1,12}.(default|manager|worker).esb/ inherits base {
 	port_mapping       => {80 => 9763, 443 => 9443, 80 => 8280, 443 => 8243},
         offset             => 0,
         hazelcast_port     => 4000,
-        config_db          => 'aesp_esb_config',
+        config_db          => 'xxxxx_esb_config',
 	config_target_path => 'esb_config',
         maintenance_mode   => 'zero',
         depsync            => false,

@@ -25,7 +25,7 @@
 #
 
 class activemq::params {
-  $host_name 		= 'broker.integrateaz.gov'
+  $host_name 		= 'broker.xxxxxxxx'
   $local_package_dir    = '/mnt/packs'
   $installation	        = '/mnt/install'
 
@@ -34,8 +34,8 @@ class activemq::params {
   # variables
   $host_user		= 'root'
 
-  $activemq_db		= 'aesp_activemq'
-  $activemq_user	= 'aesp_activemq'
-  $activemq_pass	= '4jrowwjw'
+  $activemq_db		= 'xxxxxx'
+  $activemq_user	= 'xxxxxx'
+  $activemq_pass	= 'xxxxxx'
 
 }

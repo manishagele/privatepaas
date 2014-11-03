@@ -27,10 +27,10 @@
 
 class static_lb::params {
 
-	$stratos_host_name	= 'stratos.integrateaz.gov'
-	$cep_host_name		= 'cep.integrateaz.gov'
-	$bam_host_name		= 'monitor.integrateaz.gov'
-	$ues_host_name		= 'ues.integrateaz.gov'
+	$stratos_host_name	= 'stratos.xxxxxx'
+	$cep_host_name		= 'cep.xxxxxxxxx'
+	$bam_host_name		= 'monitor.xxxxxxxx'
+	$ues_host_name		= 'ues.xxxxxxxx'
 
 	$stratos_ip		= '10.251.29.245'
 	$cep_ip			= '10.251.29.124'

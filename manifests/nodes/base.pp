@@ -40,16 +40,16 @@ node 'base' {
   $using_dns		= 'true'
 
   $greg_url		= 'https://registry.az.gov/registry'
-  $registry_user        = 'aesp_governance'
+  $registry_user        = 'xxxxx_governance'
   $registry_password    = 'eRo3UnX7'
-  $registry_database    = 'aesp_governance'
+  $registry_database    = 'xxxxx_governance'
   $registry_path        = '/_system/governance/integrate'
  
   $config_path		= '/_system/config/integrate'
 
-  $userstore_user       = 'aesp_userstore'
+  $userstore_user       = 'xxxxx_userstore'
   $userstore_password   = 'm34CsQ72'
-  $userstore_database   = 'aesp_userstore'
+  $userstore_database   = 'xxxxx_userstore'
 
   #credentials
   $admin_username       = 'admin@az.gov'
@@ -64,9 +64,9 @@ node 'base' {
   $max_wait             = '360000'
 
   # stats database
-  $amstats_user         = 'aesp_apim_stats'
+  $amstats_user         = 'xxxxx_apim_stats'
   $amstats_password     = 'E6cvzMIP'
-  $amstats_database     = 'aesp_apim_stats'
+  $amstats_database     = 'xxxxx_apim_stats'
 
   $bam_ip              = '10.251.29.105'
   $bam_hostname        = 'monitor.integrateaz.gov'

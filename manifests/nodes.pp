@@ -62,7 +62,7 @@ node /php-nginx/ inherits base {
 # private paas core
 node /paas.core/ inherits base {
   class {'paascore': 
-	config_db	=> 'aesp_sm_config',
+	config_db	=> 'xxxxx_sm_config',
   }
 }
 
