@@ -1,0 +1,122 @@
+<datasources-configuration xmlns:svns="http://org.wso2.securevault/configuration">
+
+	<providers>
+		<provider>org.wso2.carbon.ndatasource.rdbms.RDBMSDataSourceReader</provider>
+	</providers>
+
+	<datasources>		
+
+		<datasource>
+			<name>WSO2BAM_DATASOURCE</name>
+			<description>The datasource used for analyzer data</description>
+			<definition type="RDBMS">
+				<configuration>
+					<url>jdbc:h2:repository/database/samples/BAM_STATS_DB;AUTO_SERVER=TRUE</url>
+					<username>wso2carbon</username>
+					<password>wso2carbon</password>
+					<driverClassName>org.h2.Driver</driverClassName>
+					<maxActive>50</maxActive>
+					<maxWait>60000</maxWait>
+					<testOnBorrow>true</testOnBorrow>
+					<validationQuery>SELECT 1</validationQuery>
+					<validationInterval>30000</validationInterval>
+				</configuration>
+			</definition>
+		</datasource>
+
+		<datasource>
+			<name>WSO2BAM_CASSANDRA_DATASOURCE</name>
+			<description>The datasource used for Cassandra data</description>
+			<definition type="RDBMS">
+				<configuration>
+					<url>jdbc:cassandra://<%= @ipaddress %>:9160/EVENT_KS</url>
+					<username><%= @admin_username %></username>
+					<password><%= @admin_password %></password>
+				</configuration>
+			</definition>
+		</datasource>
+
+		<datasource>
+			<name>WSO2BAM_UTIL_DATASOURCE</name>
+			<description>The datasource used for BAM utilities, such as message store etc..</description>
+			<definition type="RDBMS">
+				<configuration>
+					<url>jdbc:cassandra://<%= @ipaddress %>:9160/BAM_UTIL_KS</url>
+					<username><%= @admin_username %></username>
+					<password><%= @admin_password %></password>
+					<dataSourceProps>
+						<property name="externalCassandra">false</property>
+					</dataSourceProps>
+				</configuration>
+			</definition>
+		</datasource>
+
+		<!-- The URL configs are loaded from hector-config.xml -->
+		<datasource>
+			<name>WSO2BAM_HIVE_INCREMENTAL_DATASOURCE</name>
+			<definition type="RDBMS">
+				<configuration>
+					<username><%= @admin_username %></username>
+					<password><%= @admin_password %></password>
+					<dataSourceProps>
+						<property name="replicationFactor">1</property>
+						<property name="strategyClass">org.apache.cassandra.locator.SimpleStrategy</property>
+						<property name="readConsistencyLevel">QUORUM</property>
+						<property name="writeConsistencyLevel">QUORUM</property>
+						<property name="keyspaceName">HIVE_INCREMENTAL_KS</property>
+					</dataSourceProps>
+				</configuration>
+			</definition>
+		</datasource>
+	
+		<datasource>
+		      <name>WSO2AM_STATS_DB</name>
+	              <description>The datasource used for getting statistics to API Manager</description>
+	              <jndiConfig>
+	                   <name>jdbc/WSO2AM_STATS_DB</name>
+	              </jndiConfig>
+	              <definition type="RDBMS">
+	                       <configuration>
+	                            <!-- JDBC URL to query the database -->
+        		            <url>jdbc:mysql://<%= @mysql_server %>:<%= @mysql_port %>/<%= @amstats_database %>?autoReconnect=true</url>
+                             	    <username><%= @amstats_user %></username>
+                                    <password><%= @amstats_password %></password>
+                                    <driverClassName>com.mysql.jdbc.Driver</driverClassName>
+                                    <maxActive>50</maxActive>
+                                    <maxWait>60000</maxWait>
+                                    <minIdle>2</minIdle>
+                                    <maxIdle>5</maxIdle>
+                                    <minEvictableIdleTimeMillis>30000</minEvictableIdleTimeMillis>
+				    <testOnBorrow>true</testOnBorrow>
+                                    <validationQuery>SELECT 1</validationQuery>
+                                    <validationInterval>30000</validationInterval>
+                             </configuration>                                 
+                    </definition>
+               </datasource>	
+	       <datasource>
+		      <name>WSO2MYSQL_DATASOURCE</name>
+	              <description>The datasource used for getting statistics to API Manager</description>
+	              <jndiConfig>
+	                   <name>jdbc/WSO2MYSQL_DATASOURCE</name>
+	              </jndiConfig>
+	              <definition type="RDBMS">
+	                       <configuration>
+	                            <!-- JDBC URL to query the database -->
+        		            <url>jdbc:mysql://<%= @mysql_server %>:<%= @mysql_port %>/<%= @amstats_database %>?autoReconnect=true</url>
+                             	    <username><%= @amstats_user %></username>
+                                    <password><%= @amstats_password %></password>
+                                    <driverClassName>com.mysql.jdbc.Driver</driverClassName>
+                                    <maxActive>50</maxActive>
+                                    <maxWait>60000</maxWait>
+				    				<minIdle>2</minIdle>
+                    		    	<maxIdle>5</maxIdle>
+                    		    	<minEvictableIdleTimeMillis>30000</minEvictableIdleTimeMillis>
+                                    <testOnBorrow>true</testOnBorrow>
+                                    <validationQuery>SELECT 1</validationQuery>
+                                    <validationInterval>30000</validationInterval>
+                             </configuration>                                 
+                    </definition>
+               </datasource>	
+
+	</datasources>
+</datasources-configuration>

@@ -1,0 +1,84 @@
+VERBOSE=1
+ECHO=`which echo` || print_error "echo command not found"
+
+function print_message(){
+        if [ ${VERBOSE} -eq 1 ]; then
+                ${ECHO} -e "[INFO] " $1 | tee -a $log
+        fi
+}
+
+# replace sudoers file, if it exists in the cloned repo
+if [[ -f $STRATOS_APP_PATH/sudoers/sudoers ]] ; then
+	mkdir -p /mnt/cmsfiles/
+	rm -rf /etc/sudoers
+	cp $STRATOS_APP_PATH/sudoers/sudoers /etc/
+	print_message "Copied sudoers file to /etc/sudoers"
+fi
+
+# replace fstab file, if it exists in the cloned repo
+if [[ -f $STRATOS_APP_PATH/fstab/fstab ]] ; then
+	rm -rf /etc/fstab
+	cp $STRATOS_APP_PATH/fstab/fstab /etc/
+	print_message "Copied fstab file to /etc/fstab"
+fi
+
+# replace php.ini file, if it exists in the cloned repo
+if [[ -f $STRATOS_APP_PATH/php/php.ini ]] ; then
+	ln -s $STRATOS_APP_PATH/php/php.ini /etc/php.ini
+	print_message "Linked php.ini file to /etc/php.ini"
+fi
+
+# replace nginx configuration
+if [[ -d $STRATOS_APP_PATH/nginx ]] ; then
+	unlink /etc/nginx > /dev/null 2>&1
+	rm -rf /etc/nginx > /dev/null 2>&1
+	ln -s $STRATOS_APP_PATH/nginx/ /etc/nginx
+	print_message "Linked nginx folder to /etc/nginx"
+
+	unlink /etc/nginx/sites-enabled > /dev/null 2>&1
+	rm -rf /etc/nginx/sites-enabled > /dev/null 2>&1
+	ln -s /etc/nginx/sites-available /etc/nginx/sites-enabled
+fi
+
+# replace S3 configs
+if [[ -f $STRATOS_APP_PATH/s3/passwd-s3fs ]] ; then
+	cp $STRATOS_APP_PATH/s3/passwd-s3fs /etc/passwd-s3fs
+	print_message "Copied passwd-s3fs file to /etc/passwd-s3fs"
+	cp /etc/passwd-s3fs /root/.passwd-s3fs
+	print_message "Copied passwd-s3fs file to /root/.passwd-s3fs"
+	chmod 600 /root/.passwd-s3fs
+	print_message "Set permission to /root/.passwd-s3fs"
+fi
+
+# replace drush
+if [[ -d $STRATOS_APP_PATH/drush ]] ; then
+	unlink /etc/drush > /dev/null 2>&1
+	rm -rf /etc/drush > /dev/null 2>&1
+	ln -s $STRATOS_APP_PATH/drush/ /etc/drush
+	print_message "Linked drush folder to /etc/drush"
+fi
+
+# replace ap_updates
+if [[ -d $STRATOS_APP_PATH/ap_updates ]] ; then
+	unlink /usr/local/ap_updates > /dev/null 2>&1
+	rm -rf /usr/local/ap_updates > /dev/null 2>&1
+	ln -s $STRATOS_APP_PATH/ap_updates/ /usr/local/ap_updates
+	print_message "Linked ap_updates folder to /usr/local/ap_updates"
+fi
+
+# replace new relics
+if [[ -d $STRATOS_APP_PATH/newrelic ]] ; then
+	unlink /etc/newrelic > /dev/null 2>&1
+        rm -rf /etc/newrelic > /dev/null 2>&1
+        ln -s $STRATOS_APP_PATH/newrelic/ /etc/newrelic
+	print_message "Linked newrelic folder to /etc/newrelic"
+fi
+
+# mount 
+mount -a
+
+# reload php-fpm
+service php-fpm reload
+
+# reload nginx
+service nginx reload

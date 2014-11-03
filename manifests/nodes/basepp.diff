@@ -1,0 +1,58 @@
+diff --git a/puppet/manifests/nodes/base.pp b/puppet/manifests/nodes/base.pp
+index 3c3eded..fabcd10 100644
+--- a/puppet/manifests/nodes/base.pp
++++ b/puppet/manifests/nodes/base.pp
+@@ -19,24 +19,24 @@
+ node 'base' {
+ 
+   #essential variables
+-  $package_repo         = 'PACKAGE_REPO'
++  $package_repo         = '10.251.31.93'
+   $local_package_dir    = '/mnt/packs'
+-  $mb_ip                = 'MB_IP'
+-  $mb_port              = 'MB_PORT'
++  $mb_ip                = '10.251.31.71'
++  $mb_port              = '61616'
+   $mb_type		= 'activemq' #in wso2 mb case, value should be 'wso2mb'
+-  $cep_ip               = 'CEP_IP'
+-  $cep_port             = 'CEP_PORT'
++  $cep_ip               = '10.251.31.96'
++  $cep_port             = '7611'
+   $truststore_password  = 'wso2carbon'
+-  $java_distribution	= 'JAVA_FILE'
+-  $java_name		= 'JAVA_NAME'
+-  $java_home		= '/opt/java'
++  $java_distribution	= ''
++  $java_name		= ''
++  $java_home		= '/usr/java/jdk1.7.0_51/'
+   $member_type_ip       = 'private'
+   $lb_httpPort 		= '80'
+   $lb_httpsPort 	= '443'
+-  $lb_private_ip 	= ''
+-  $lb_public_ip 	= ''
++  $lb_private_ip 	= '10.251.31.147'
++  $lb_public_ip 	= '54.215.161.0'
+   $tomcat_version 	= '7.0.52'
+-  $enable_log_publisher = 'ENABLE_LOG_PUBLISHER'
++  $enable_log_publisher = 'false'
+   $server_ip            = $ipaddress
+ 
+ 
+@@ -59,13 +59,13 @@ node 'base' {
+   #$git_hostname        = 'git.stratos.com'
+   #$git_ip              = '10.4.128.13'
+ 
+-  $mysql_server         = 'DB_HOST'
+-  $mysql_port           = 'DB_PORT'
++  $mysql_server         = '10.251.31.62'
++  $mysql_port           = '3306'
+   $max_connections      = '100000'
+   $max_active           = '150'
+   $max_wait             = '360000'
+-  $bam_ip              = 'BAM_IP'
+-  $bam_port            = 'BAM_PORT'
++#  $bam_ip              = 'BAM_IP'
++#  $bam_port            = 'BAM_PORT'
+   
+   #$internal_repo_user     = 'admin'
+   #$internal_repo_password = 'admin'
