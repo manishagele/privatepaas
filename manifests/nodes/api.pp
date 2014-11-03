@@ -34,7 +34,7 @@ node /[0-9]{1,12}.(default|manager|worker).gateway/ inherits base {
         config_database          => 'xxxxx_gateway_config',
         config_target_path => 'gateway_config',
 	config_user          => 'xxxxx_gateway',
-	config_password      => 'o7gIsTP4',
+	config_password      => 'yyyyy',
         maintenance_mode   => 'refresh',
         depsync            => false,
         clustering         => true,
